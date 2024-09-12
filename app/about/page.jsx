@@ -83,7 +83,7 @@ const certificates = [
     title: 'SQL BASIC',
     platform: 'HackerRank',
     dateEarned: '2024',
-    description: 'An introductory course covering the fundamentals of React, including components, state management, and hooks.',
+    description: 'Completed SQL Basics on HackerRank, proving skills in writing and optimizing queries.',
     link: 'https://www.hackerrank.com/certificates/256451400398',
     image: '/assets/certificates/cert1.png',
   },
@@ -91,8 +91,8 @@ const certificates = [
     title: 'JavaScript BASIC',
     platform: 'HackerRank',
     dateEarned: '2024',
-    description: 'A course focusing on advanced SQL queries, database optimization, and data manipulation techniques.',
-    link: 'https://www.hackerrank.com/certificates/256451400398',
+    description: 'Achieved JavaScript Basics on HackerRank, showing a solid grasp of core JavaScript concepts.',
+    link: 'https://www.hackerrank.com/certificates/abafff203fce',
     image: '/assets/certificates/cert1.png',
   }
 ];
@@ -243,7 +243,7 @@ const About = () => {
           <TabsContent value="experience" className='w-full'>
             <div className='flex flex-col gap-[30px] text-center xl:text-left'>
               <h3 className='text-4xl font-bold'>{experience[0].title}</h3>
-              <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0'>{experience[0].description}</p>
+              <p className='max-w-[600px] text-white/60 mx-auto xl:mx-0 text-justify'>{experience[0].description}</p>
               <ScrollArea className='w-full'>
                 <ul className='grid grid-cols-1 lg:grid-cols-2 gap-[30px]'>
                   {
@@ -298,7 +298,12 @@ const About = () => {
           <TabsContent value="certificates" className='w-full py-8'>
             <div className='flex flex-col items-center'>
               <h3 className='text-4xl font-bold mb-6'>My Certificates</h3>
-              <Swiper onSlideChange={handleSlideChange} className='w-full max-w-[600px]' ref={swiperRef}>
+              <Swiper
+                spaceBetween={20}
+                slidesPerView={1}
+                onSlideChange={handleSlideChange}
+                className='w-full max-w-[600px]'
+                ref={swiperRef}>
                 {certificates.map((cert, index) => (
                   <SwiperSlide key={index}>
                     <div className='bg-[#081f37] rounded-lg shadow-lg p-4 flex flex-col items-center'>
@@ -311,15 +316,14 @@ const About = () => {
                       />
                       <h4 className='text-2xl font-semibold text-accent'>{cert.title}</h4>
                       <p className='text-white/70 mb-2'>{cert.platform} | {cert.dateEarned}</p>
-                      <p className='text-white/60 mb-4'>{cert.description}</p>
-                      <Link href={cert.link} target='_blank' className='text-blue-500 underline mt-2'>
+                      <p className='text-white/60 mb-4 text-justify'>{cert.description}</p>
+                      <Link href={cert.link} target='_blank' className='inline-flex items-center justify-center px-4 py-2 bg-accent text-white text-xs rounded hover:bg-accent-hover transition-colors'>
                         View Certificate
                       </Link>
                     </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
-              <WorkSliderBtns />
             </div>
           </TabsContent>
 
