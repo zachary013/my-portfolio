@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import WorkSliderBtns from '@/components/WorkSliderBtns';
 import "swiper/css";
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import {
   FaHtml5,
@@ -80,26 +80,20 @@ const education = [
 
 const certificates = [
   {
-    icon: '/assets/about/certificate.svg',
-    title: 'My Certificates',
-    items: [
-      {
-        title: 'SQL BASIC',
-        platform: 'HackerRank',
-        dateEarned: '2024',
-        description: 'An introductory course covering the fundamentals of React, including components, state management, and hooks.',
-        link: '#',
-        image: '/assets/certificates/cert1.png',
-      },
-      {
-        title: 'JavaScript BASIC',
-        platform: 'HackerRank',
-        dateEarned: '2024',
-        description: 'A course focusing on advanced SQL queries, database optimization, and data manipulation techniques.',
-        link: '#',
-        image: '/assets/certificates/cert1.png',
-      }
-    ]
+    title: 'SQL BASIC',
+    platform: 'HackerRank',
+    dateEarned: '2024',
+    description: 'An introductory course covering the fundamentals of React, including components, state management, and hooks.',
+    link: 'https://www.hackerrank.com/certificates/256451400398',
+    image: '/assets/certificates/cert1.png',
+  },
+  {
+    title: 'JavaScript BASIC',
+    platform: 'HackerRank',
+    dateEarned: '2024',
+    description: 'A course focusing on advanced SQL queries, database optimization, and data manipulation techniques.',
+    link: 'https://www.hackerrank.com/certificates/256451400398',
+    image: '/assets/certificates/cert1.png',
   }
 ];
 
@@ -198,13 +192,13 @@ import { motion } from 'framer-motion';
 
 const About = () => {
   const [certificate, setCertificate] = useState(certificates[0]);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [isHovered, setIsHovered] = useState(false)
+  const swiperRef = useRef(null)
 
   const handleSlideChange = (swiper) => {
     const currentIndex = swiper.activeIndex;
     setCertificate(certificates[currentIndex]);
-  };
-
+  }
 
   return <motion.div
     initial={{ opacity: 0 }}
@@ -299,56 +293,37 @@ const About = () => {
               </ScrollArea>
             </div>
           </TabsContent>
-          <TabsContent value="certificates" className='w-full'>
-            <h3 className='text-4xl font-bold text-center mb-8'>My Certificates</h3>
-            <div className='w-full xl:w-[60%] mx-auto relative'>
-              <Swiper
-                spaceBetween={30}
-                slidesPerView={1}
-                className='mb-12'
-                onSlideChange={handleSlideChange}
-              >
+
+
+          <TabsContent value="certificates" className='w-full py-8'>
+            <div className='flex flex-col items-center'>
+              <h3 className='text-4xl font-bold mb-6'>My Certificates</h3>
+              <Swiper onSlideChange={handleSlideChange} className='w-full max-w-[600px]' ref={swiperRef}>
                 {certificates.map((cert, index) => (
-                  <SwiperSlide key={index} className='w-full'>
-                    <div className='relative flex flex-col justify-center items-center bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden'>
+                  <SwiperSlide key={index}>
+                    <div className='bg-[#081f37] rounded-lg shadow-lg p-4 flex flex-col items-center'>
                       <Image
                         src={cert.image}
-                        width={600}
-                        height={400}
-                        className='object-cover w-full h-48'
-                        alt={`${cert.title} certificate`}
+                        alt={cert.title}
+                        width={400}
+                        height={300}
+                        className="rounded-lg mb-4"
                       />
-                      <div className='p-4'>
-                        <h4 className='text-xl font-semibold'>{cert.title}</h4>
-                        <p className='text-gray-600'>{cert.platform} - {cert.dateEarned}</p>
-                        <p className='text-gray-500 mt-2'>{cert.description}</p>
-                      </div>
-                      {cert.link && (
-                        <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
-                          <Link href={cert.link} target="_blank" rel="noopener noreferrer">
-                            <TooltipProvider delayDuration={100}>
-                              <Tooltip>
-                                <TooltipTrigger className='bg-accent text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-pink-700 transition-colors'>
-                                  View Certificate
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                  <p>View Certificate</p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </TooltipProvider>
-                          </Link>
-                        </div>
-                      )}
+                      <h4 className='text-2xl font-semibold text-accent'>{cert.title}</h4>
+                      <p className='text-white/70 mb-2'>{cert.platform} | {cert.dateEarned}</p>
+                      <p className='text-white/60 mb-4'>{cert.description}</p>
+                      <Link href={cert.link} target='_blank' className='text-blue-500 underline mt-2'>
+                        View Certificate
+                      </Link>
                     </div>
                   </SwiperSlide>
                 ))}
               </Swiper>
-              <WorkSliderBtns
-                containerStyles="flex gap-2 absolute right-0 top-1/2 transform -translate-y-1/2 z-20"
-                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
-              />
+              <WorkSliderBtns />
             </div>
           </TabsContent>
+
+
           <TabsContent value="skills" className='w-full h-full'>
             <div className='flex flex-col gap-[30px]'>
               <div className='flex flex-col gap-[30px] text-center xl:text-left'>

@@ -63,7 +63,7 @@ const projects = [
     image: '/assets/projects/real-estate.jpg',
     video: '',
     live: '',
-    github: '',
+    github: 'https://github.com/zachary013/real-estate-app-mern',
   },
 ]
 
