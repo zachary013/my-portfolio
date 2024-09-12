@@ -7,18 +7,18 @@ const services = [
   {
     num: '01',
     title: 'Web Development',
-    description: 'I will create you a modern and responsive website using modern technologies such as NextJs and Framer Motion, that fits you and your budget.',
+    description: 'I will create you a modern and responsive website using modern technologies such as NextJs and Framer Motion, that fits your needs and budget.',
     href: ''
   },
   {
     num: '02',
     title: 'Mobile App Development',
-    description: 'I create mobile applications using VueJs framework Quasar, ensuring a smooth experience on both iOS and Android devices.',
+    description: 'I create mobile applications using Android Studio with Java for android, and VueJs framework Quasar for cross-platform apps.',
     href: ''
   },
   {
     num: '03',
-    title: 'Gaming',
+    title: 'Game Development',
     description: 'I build 2D games in Unity particularly RPGs and Platformers.',
     href: ''
   },

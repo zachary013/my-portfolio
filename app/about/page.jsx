@@ -2,8 +2,10 @@
 
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import WorkSliderBtns from '@/components/WorkSliderBtns';
 import "swiper/css";
 import Link from 'next/link';
+import { useState } from 'react';
 
 import {
   FaHtml5,
@@ -82,20 +84,20 @@ const certificates = [
     title: 'My Certificates',
     items: [
       {
-        title: 'React Basics',
-        platform: 'Coursera',
+        title: 'SQL BASIC',
+        platform: 'HackerRank',
         dateEarned: '2024',
         description: 'An introductory course covering the fundamentals of React, including components, state management, and hooks.',
-        link: '',
-        image: '/assets/certificates/react-basics.jpg',
+        link: '#',
+        image: '/assets/certificates/cert1.png',
       },
       {
-        title: 'SQL Advanced',
+        title: 'JavaScript BASIC',
         platform: 'HackerRank',
         dateEarned: '2024',
         description: 'A course focusing on advanced SQL queries, database optimization, and data manipulation techniques.',
-        link: '',
-        image: '/assets/certificates/react-basics.jpg',
+        link: '#',
+        image: '/assets/certificates/cert1.png',
       }
     ]
   }
@@ -195,6 +197,15 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { motion } from 'framer-motion';
 
 const About = () => {
+  const [certificate, setCertificate] = useState(certificates[0]);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const handleSlideChange = (swiper) => {
+    const currentIndex = swiper.activeIndex;
+    setCertificate(certificates[currentIndex]);
+  };
+
+
   return <motion.div
     initial={{ opacity: 0 }}
     animate={{
@@ -289,7 +300,54 @@ const About = () => {
             </div>
           </TabsContent>
           <TabsContent value="certificates" className='w-full'>
-            <h3 className='text-3xl font-bold text-center mb-4'>My Certificates</h3>
+            <h3 className='text-4xl font-bold text-center mb-8'>My Certificates</h3>
+            <div className='w-full xl:w-[60%] mx-auto relative'>
+              <Swiper
+                spaceBetween={30}
+                slidesPerView={1}
+                className='mb-12'
+                onSlideChange={handleSlideChange}
+              >
+                {certificates.map((cert, index) => (
+                  <SwiperSlide key={index} className='w-full'>
+                    <div className='relative flex flex-col justify-center items-center bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden'>
+                      <Image
+                        src={cert.image}
+                        width={600}
+                        height={400}
+                        className='object-cover w-full h-48'
+                        alt={`${cert.title} certificate`}
+                      />
+                      <div className='p-4'>
+                        <h4 className='text-xl font-semibold'>{cert.title}</h4>
+                        <p className='text-gray-600'>{cert.platform} - {cert.dateEarned}</p>
+                        <p className='text-gray-500 mt-2'>{cert.description}</p>
+                      </div>
+                      {cert.link && (
+                        <div className='absolute bottom-4 left-1/2 transform -translate-x-1/2'>
+                          <Link href={cert.link} target="_blank" rel="noopener noreferrer">
+                            <TooltipProvider delayDuration={100}>
+                              <Tooltip>
+                                <TooltipTrigger className='bg-accent text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-pink-700 transition-colors'>
+                                  View Certificate
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                  <p>View Certificate</p>
+                                </TooltipContent>
+                              </Tooltip>
+                            </TooltipProvider>
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <WorkSliderBtns
+                containerStyles="flex gap-2 absolute right-0 top-1/2 transform -translate-y-1/2 z-20"
+                btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
+              />
+            </div>
           </TabsContent>
           <TabsContent value="skills" className='w-full h-full'>
             <div className='flex flex-col gap-[30px]'>
