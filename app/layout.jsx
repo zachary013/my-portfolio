@@ -24,9 +24,8 @@ export default function RootLayout({ children }) {
       <StairTransition />
       <PageTransition>
       {children}
-      <Analytics />
       </PageTransition>
-      
+      <Analytics />
       </body>
     </html>
   );
