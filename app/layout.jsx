@@ -3,7 +3,8 @@ import { JetBrains_Mono } from "next/font/google";
 import PageTransition from "@/components/PageTransition";
 import "./globals.css";
 import StairTransition from "@/components/StairTransition";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import Head from 'next/head';
 
 const jetbrainsMono = JetBrains_Mono({ 
   subsets: ["latin"], 
@@ -19,13 +20,19 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body className={jetbrainsMono.variable}>
-      <Header />
-      <StairTransition />
-      <PageTransition>
-      {children}
-      </PageTransition>
-      <Analytics />
+        <Header />
+        <StairTransition />
+        <PageTransition>
+          {children}
+        </PageTransition>
+        <Analytics />
       </body>
     </html>
   );
