@@ -80,6 +80,14 @@ const education = [
 
 const certificates = [
   {
+    title: 'Frontend Developer (React)',
+    platform: 'HackerRank',
+    dateEarned: '2024',
+    description: 'Proved ability to create and optimize interactive, dynamic web apps using React.',
+    link: 'https://www.hackerrank.com/certificates/iframe/27aea8f4fd10',
+    image: '/assets/certificates/frontend-react.png',
+  },
+  {
     title: 'SQL BASIC',
     platform: 'HackerRank',
     dateEarned: '2024',
@@ -92,9 +100,33 @@ const certificates = [
     platform: 'HackerRank',
     dateEarned: '2024',
     description: 'Achieved JavaScript Basics on HackerRank, showing a solid grasp of core JavaScript concepts.',
-    link: 'https://www.hackerrank.com/certificates/abafff203fce',
+    link: 'https://www.hackerrank.com/certificates/iframe/abafff203fce',
+    image: '/assets/certificates/js-basic.png',
+  },
+  {
+    title: 'Postman API Fundamentals Student Expert',
+    platform: 'Postman',
+    dateEarned: '2024',
+    description: 'Gained hands-on experience in building, testing, and managing APIs using Postman.',
+    link: 'https://badgr.com/public/assertions/WzAtwvbfSHKBfLWOSdWv4A',
+    image: '/assets/certificates/postman-api.png',
+  },
+  {
+    title: 'SQL Intermediate',
+    platform: 'HackerRank',
+    dateEarned: '2024',
+    description: 'Expanded SQL knowledge, working with more complex queries, subqueries, and advanced functions.',
+    link: 'https://www.hackerrank.com/certificates/iframe/6dc828f31013',
     image: '/assets/certificates/cert1.png',
-  }
+  },
+  {
+    title: 'JavaScript Intermediate',
+    platform: 'HackerRank',
+    dateEarned: '2024',
+    description: 'Strengthened skills in JavaScript with advanced concepts like promises, callbacks, and ES6 features.',
+    link: 'https://www.hackerrank.com/certificates/iframe/6ef9b8e5ff2a',
+    image: '/assets/certificates/cert1.png',
+  },
 ];
 
 const skills = [

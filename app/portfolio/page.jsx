@@ -1,35 +1,30 @@
-"use client";
+'use client'
 
-import { motion } from 'framer-motion';
-import React, { useState, useEffect } from 'react';
-
+import { motion } from 'framer-motion'
+import React, { useState, useEffect, useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import "swiper/css";
-
-import { BsArrowUpRight, BsGithub } from 'react-icons/bs';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import WorkSliderBtns from '@/components/WorkSliderBtns';
-
-import Link from 'next/link';
-import Image from 'next/image';
-
-// Import icons for tech stack
-import { FaUnity, FaLaravel, FaVuejs, FaNodeJs, FaReact, FaSass } from 'react-icons/fa';
-import { SiMongodb, SiCsharp, SiExpress, SiInertia, SiMysql } from 'react-icons/si';
+import "swiper/css"
+import { BsArrowUpRight, BsGithub } from 'react-icons/bs'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import WorkSliderBtns from '@/components/WorkSliderBtns'
+import Link from 'next/link'
+import Image from 'next/image'
+import { FaUnity, FaLaravel, FaVuejs, FaNodeJs, FaReact, FaSass } from 'react-icons/fa'
+import { SiMongodb, SiCsharp, SiExpress, SiInertia, SiMysql } from 'react-icons/si'
 
 const techIcons = {
   CSharp: <SiCsharp className='text-secondary' />,
   Unity: <FaUnity className='text-secondary' />,
   Laravel: <FaLaravel className='text-secondary' />,
   Vue: <FaVuejs className='text-secondary' />,
-  Inertia: <SiInertia className='text-secondary' />, // Use a relevant icon
+  Inertia: <SiInertia className='text-secondary' />,
   MySql: <SiMysql className='text-secondary' />,
   MongoDB: <SiMongodb className='text-secondary' />,
   'Express.js': <SiExpress className='text-secondary' />,
   React: <FaReact className='text-secondary' />,
   'Node.js': <FaNodeJs className='text-secondary' />,
   'Tailwind.css': <FaSass className='text-secondary' />,
-};
+}
 
 const projects = [
   {
@@ -68,34 +63,40 @@ const projects = [
 ]
 
 const Portfolio = () => {
-  const [project, setProject] = useState(projects[0]);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [project, setProject] = useState(projects[0])
+  const [hoveredIndex, setHoveredIndex] = useState(null)
+  const videoRefs = useRef(projects.map(() => React.createRef()))
 
   const handleSlideChange = (swiper) => {
-    const currentIndex = swiper.activeIndex;
-    setProject(projects[currentIndex]);
+    const currentIndex = swiper.activeIndex
+    setProject(projects[currentIndex])
   }
 
   useEffect(() => {
-    // Preload videos
-    projects.forEach((project) => {
+    projects.forEach((project, index) => {
       if (project.video) {
-        const video = document.createElement('video');
-        video.src = project.video;
-        video.preload = 'auto';
+        const video = videoRefs.current[index].current
+        video.load()
       }
-    });
-  }, []);
+    })
+  }, [])
 
   const handleMouseEnter = (index) => {
-    setHoveredIndex(index);
-    setVideoLoaded(false);
-  };
+    setHoveredIndex(index)
+    if (projects[index].video) {
+      const video = videoRefs.current[index].current
+      video.play()
+    }
+  }
 
-  const handleVideoLoaded = () => {
-    setVideoLoaded(true);
-  };
+  const handleMouseLeave = (index) => {
+    setHoveredIndex(null)
+    if (projects[index].video) {
+      const video = videoRefs.current[index].current
+      video.pause()
+      video.currentTime = 0
+    }
+  }
 
   return (
     <motion.section
@@ -125,7 +126,6 @@ const Portfolio = () => {
               </ul>
               <div className='border border-white/20'></div>
               <div className='flex items-center gap-4'>
-                {/* Live project */}
                 <Link href={project.live} target="_blank" rel="noopener noreferrer">
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
@@ -138,7 +138,6 @@ const Portfolio = () => {
                     </Tooltip>
                   </TooltipProvider>
                 </Link>
-                {/* Github repo */}
                 <Link href={project.github} target="_blank" rel="noopener noreferrer">
                   <TooltipProvider delayDuration={100}>
                     <Tooltip>
@@ -166,39 +165,41 @@ const Portfolio = () => {
                   <div
                     className='h-[460px] relative group flex justify-center items-center bg-pink-50/20 rounded-lg overflow-hidden'
                     onMouseEnter={() => handleMouseEnter(index)}
-                    onMouseLeave={() => setHoveredIndex(null)}
+                    onMouseLeave={() => handleMouseLeave(index)}
                   >
-                    {hoveredIndex === index && project.video ? (
-                      <>
-                        {!videoLoaded && (
-                          <div className='absolute inset-0 flex justify-center items-center'>
-                            <div className='loader'></div>
-                          </div>
-                        )}
-                        <video
-                          className='absolute inset-0 w-full h-full object-cover'
-                          autoPlay
-                          loop
-                          muted
-                          onLoadedData={handleVideoLoaded}
-                        >
-                          <source src={project.video} type="video/mp4" />
-                          Your browser does not support the video tag.
-                        </video>
-                      </>
+                    {project.video ? (
+                      <video
+                        ref={videoRefs.current[index]}
+                        className='absolute inset-0 w-full h-full object-cover'
+                        loop
+                        muted
+                        playsInline
+                        preload="auto"
+                      >
+                        <source src={project.video} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
                     ) : (
-                      <>
-                        <div className='absolute top-0 bottom-0 w-full h-full bg-black/10 z-10'></div>
-                        <div className='relative w-full h-full'>
-                          <Image
-                            src={project.image}
-                            fill
-                            className='object-cover'
-                            alt="Project image"
-                          />
-                        </div>
-                      </>
+                      <Image
+                        src={project.image}
+                        fill
+                        className='object-cover'
+                        alt={project.title}
+                      />
                     )}
+                    <div 
+                      className={`absolute inset-0 bg-gradient-to-t from-black/70 to-black/20 transition-opacity duration-300 ${
+                        hoveredIndex === index ? 'opacity-0' : 'opacity-100'
+                      }`}
+                    />
+                    <div 
+                      className={`absolute inset-0 flex flex-col justify-end p-6 transition-opacity duration-300 ${
+                        hoveredIndex === index ? 'opacity-0' : 'opacity-100'
+                      }`}
+                    >
+                      <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+                      <p className="text-white/80">{project.category}</p>
+                    </div>
                   </div>
                 </SwiperSlide>
               ))}
@@ -211,7 +212,7 @@ const Portfolio = () => {
         </div>
       </div>
     </motion.section>
-  );
+  )
 }
 
-export default Portfolio;
+export default Portfolio
