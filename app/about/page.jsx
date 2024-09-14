@@ -191,13 +191,11 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { motion } from 'framer-motion';
 
 const About = () => {
-  const [certificate, setCertificate] = useState(certificates[0]);
-  const [isHovered, setIsHovered] = useState(false)
-  const swiperRef = useRef(null)
+  const [certificate, setCertificate] = useState(certificates[0])
 
   const handleSlideChange = (swiper) => {
-    const currentIndex = swiper.activeIndex;
-    setCertificate(certificates[currentIndex]);
+    const currentIndex = swiper.activeIndex
+    setCertificate(certificates[currentIndex])
   }
 
   return <motion.div
@@ -296,36 +294,42 @@ const About = () => {
 
 
           <TabsContent value="certificates" className='w-full py-8'>
-            <div className='flex flex-col items-center'>
-              <h3 className='text-4xl font-bold mb-6'>My Certificates</h3>
-              <Swiper
-                spaceBetween={20}
-                slidesPerView={1}
-                onSlideChange={handleSlideChange}
-                className='w-full max-w-[600px]'
-                ref={swiperRef}>
-                {certificates.map((cert, index) => (
-                  <SwiperSlide key={index}>
-                    <div className='bg-[#081f37] rounded-lg shadow-lg p-4 flex flex-col items-center'>
-                      <Image
-                        src={cert.image}
-                        alt={cert.title}
-                        width={400}
-                        height={300}
-                        className="rounded-lg mb-4"
-                      />
-                      <h4 className='text-2xl font-semibold text-accent'>{cert.title}</h4>
-                      <p className='text-white/70 mb-2'>{cert.platform} | {cert.dateEarned}</p>
-                      <p className='text-white/60 mb-4 text-justify'>{cert.description}</p>
-                      <Link href={cert.link} target='_blank' className='inline-flex items-center justify-center px-4 py-2 bg-accent text-white text-xs rounded hover:bg-accent-hover transition-colors'>
-                        View Certificate
-                      </Link>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-          </TabsContent>
+              <div className='flex flex-col items-center'>
+                <h3 className='text-4xl font-bold mb-6'>My Certificates</h3>
+                <div className='relative w-full max-w-[600px]'>
+                  <Swiper
+                    spaceBetween={20}
+                    slidesPerView={1}
+                    onSlideChange={handleSlideChange}
+                    className='w-full'
+                  >
+                    {certificates.map((cert, index) => (
+                      <SwiperSlide key={index}>
+                        <div className='bg-[#081f37] rounded-lg shadow-lg p-4 flex flex-col items-center'>
+                          <Image
+                            src={cert.image}
+                            alt={cert.title}
+                            width={400}
+                            height={300}
+                            className="rounded-lg mb-4"
+                          />
+                          <h4 className='text-2xl font-semibold text-accent'>{cert.title}</h4>
+                          <p className='text-white/70 mb-2'>{cert.platform} | {cert.dateEarned}</p>
+                          <p className='text-white/60 mb-4 text-justify'>{cert.description}</p>
+                          <Link href={cert.link} target='_blank' className='inline-flex items-center justify-center px-4 py-2 bg-accent text-white text-xs rounded hover:bg-accent-hover transition-colors'>
+                            View Certificate
+                          </Link>
+                        </div>
+                      </SwiperSlide>
+                    ))}
+                    <WorkSliderBtns
+                      containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
+                      btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
+                    />
+                  </Swiper>
+                </div>
+              </div>
+            </TabsContent>
 
 
           <TabsContent value="skills" className='w-full h-full'>
