@@ -52,10 +52,10 @@ const projects = [
   {
     num: '03',
     category: 'Fullstack',
-    title: 'SolMar Estate',
+    title: 'Riviera Estate',
     description: 'A real estate website built using the MERN stack.',
     stack: [{ name: "MongoDB" }, { name: "Express.js" }, { name: "React" }, { name: "Node.js" }, { name: "Tailwind.css" }],
-    image: '/assets/projects/real-estate.jpg',
+    image: '/assets/projects/real-estate.png',
     video: '',
     live: '',
     github: 'https://github.com/zachary013/real-estate-app-mern',
