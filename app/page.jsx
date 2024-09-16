@@ -12,7 +12,7 @@ const Home = () => {
 
   const handleResumeClick = () => {
     playClickSound();
-    window.open('/Docs/cv-fr.pdf', '_blank'); // Update the path to your PDF
+    window.open('/Docs/cv_fr.pdf', '_blank'); // Update the path to your PDF
   };
 
   const handleSocialClick = (url) => {
