@@ -281,7 +281,7 @@ const About = () => {
                       return (
                         <li
                           key={index}
-                          className='bg-[#081f37] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start'>
+                          className='bg-gray-800 bg-opacity-50 backdrop-blur-lg h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start'>
                           <span className='text-accent'>{item.duration}</span>
                           <h3 className='text-xl max--[260px] min-h-[60px] text-center lg:text-left'>
                             {item.position}
@@ -307,7 +307,7 @@ const About = () => {
                       return (
                         <li
                           key={index}
-                          className='bg-[#081f37] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start'>
+                          className='bg-gray-800 bg-opacity-50 backdrop-blur-lg h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start'>
                           <span className='text-accent'>{item.duration}</span>
                           <h3 className='text-xl max--[260px] min-h-[60px] text-center lg:text-left'>
                             {item.degree}
@@ -337,7 +337,7 @@ const About = () => {
                   >
                     {certificates.map((cert, index) => (
                       <SwiperSlide key={index}>
-                        <div className='bg-[#081f37] rounded-lg shadow-lg p-4 flex flex-col items-center'>
+                        <div className='bg-gray-800 bg-opacity-50 backdrop-blur-lg rounded-lg shadow-lg p-4 flex flex-col items-center'>
                           <Image
                             src={cert.image}
                             alt={cert.title}
@@ -374,7 +374,7 @@ const About = () => {
                   return <li key={index}>
                     <TooltipProvider delayDuration={100}>
                       <Tooltip>
-                        <TooltipTrigger className='w-full h-[150px] bg-[#081f37] rounded-xl flex justify-center items-center group'>
+                        <TooltipTrigger className='w-full h-[150px] bg-gray-800 bg-opacity-50 backdrop-blur-lg rounded-xl flex justify-center items-center group'>
                           <div className='text-6xl group-hover:text-accent transition-all duration-300'>
                             {skill.icon}
                           </div>

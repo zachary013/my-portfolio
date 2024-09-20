@@ -39,7 +39,7 @@ const Photo = () => {
             cx="253"
             cy="253"
             r="250"
-            stroke="#E31B6D"
+            stroke="#C197D2"
             strokeWidth="4"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -52,7 +52,7 @@ const Photo = () => {
               ],
               rotate: [0, 360],
               strokeWidth: [4, 8, 4],
-              stroke: ['#E31B6D', '#48E0E4'],
+              stroke: ['#C197D2', '#5B3256'],
               opacity: [1, 0.5, 1],
               scale: [1, 1.05, 1],
             }}

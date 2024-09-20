@@ -22,12 +22,11 @@ module.exports = {
 	},
   	extend: {
 		colors: {
-			primary: "#0d1321", 
+			primary: "#0b030d", 
 			accent: {
-				DEFAULT: "#E31B6D",
-				hover: "#680747",
+				DEFAULT: "#C197D2",
+				hover: "#6F4685",
 			},
-			secondary: "#48e0e4",
 		},
 
   		keyframes: {

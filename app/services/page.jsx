@@ -1,66 +1,93 @@
-"use client";
-import { BsArrowDownRight } from 'react-icons/bs';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+'use client'
+
+import { motion } from 'framer-motion'
+import Link from 'next/link'
+import { Code2, Smartphone, Gamepad2 } from 'lucide-react'
 
 const services = [
   {
     num: '01',
     title: 'Web Development',
-    description: 'I will create you a modern and responsive website using modern technologies such as NextJs and Framer Motion, that fits your needs and budget.',
-    href: ''
+    description: 'I create modern and responsive websites using cutting-edge technologies like NextJs and Framer Motion, tailored to your needs and budget.',
+    href: '#',
+    icon: Code2
   },
   {
     num: '02',
     title: 'Mobile App Development',
-    description: 'I create mobile applications using Android Studio with Java for android, and VueJs framework Quasar for cross-platform apps.',
-    href: ''
+    description: 'I develop mobile applications using Android Studio with Java for Android, and the VueJs framework Quasar for cross-platform apps.',
+    href: '#',
+    icon: Smartphone
   },
   {
     num: '03',
     title: 'Game Development',
-    description: 'I build 2D games in Unity particularly RPGs and Platformers.',
-    href: ''
+    description: 'I specialize in building 2D games in Unity, with a focus on engaging RPGs and dynamic Platformers.',
+    href: '#',
+    icon: Gamepad2
   },
-];
+]
 
-const Services = () => {
+export default function Services() {
   return (
-    <section className='min-h-[80vh] flex flex-col justify-center py-12 xl:py-0'>
-      <div className="container mx-auto">
+    <section className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-20">
+      <div className="container mx-auto px-4">
+        <motion.h2
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold text-center text-white mb-16"
+        >
+          My Services
+        </motion.h2>
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-            transition: { delay: 2.4, duration: 0.4, ease: 'easeIn' },
-          }}
-          className='grid grid-cols-1 md:grid-cols-2 gap-[60px]'
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {services.map((service, index) => {
-            return (
-              <div key={index} className='flex-1 flex flex-col justify-center gap-6 group'>
-                <div className='w-full flex justify-between items-center'>
-                  <div className='text-5xl font-extrabold text-outline text-transparent group-hover:text-outline-hover transition-all duration-500'>
-                    {service.num}
-                  </div>
-                  <Link href={service.href} className='w-[70px] h-[70px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45'>
-                    <BsArrowDownRight className='text-primary text-3xl ' />
-                  </Link>
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 * (index + 1), duration: 0.5 }}
+              className="bg-gray-800 bg-opacity-50 backdrop-blur-lg rounded-lg p-6 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <span className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+                  {service.num}
+                </span>
+                <div className="w-16 h-16 rounded-full bg-primary bg-opacity-20 flex items-center justify-center">
+                  <service.icon className="w-8 h-8 text-accent" />
                 </div>
-                <h2 className='text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500'>
-                  {service.title}
-                </h2>
-                <p className='text-white/60'>
-                {service.description}
-                </p>
-                <div className='border-b border-white/20 w-full'></div>
               </div>
-            );
-          })}
+              <h3 className="text-2xl font-bold text-white mb-4">{service.title}</h3>
+              <p className="text-gray-300 mb-6">{service.description}</p>
+              <Link
+                href={service.href}
+                className="inline-flex items-center px-4 py-2 bg-primary text-white rounded-full hover:bg-accent transition-colors duration-300"
+              >
+                Learn More
+                <svg
+                  className="w-4 h-4 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>
-  );
+  )
 }
-
-export default Services;

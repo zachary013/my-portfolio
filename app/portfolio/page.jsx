@@ -13,17 +13,17 @@ import { FaUnity, FaLaravel, FaVuejs, FaNodeJs, FaReact, FaSass } from 'react-ic
 import { SiMongodb, SiCsharp, SiExpress, SiInertia, SiMysql } from 'react-icons/si'
 
 const techIcons = {
-  CSharp: <SiCsharp className='text-secondary' />,
-  Unity: <FaUnity className='text-secondary' />,
-  Laravel: <FaLaravel className='text-secondary' />,
-  Vue: <FaVuejs className='text-secondary' />,
-  Inertia: <SiInertia className='text-secondary' />,
-  MySql: <SiMysql className='text-secondary' />,
-  MongoDB: <SiMongodb className='text-secondary' />,
-  'Express.js': <SiExpress className='text-secondary' />,
-  React: <FaReact className='text-secondary' />,
-  'Node.js': <FaNodeJs className='text-secondary' />,
-  'Tailwind.css': <FaSass className='text-secondary' />,
+  CSharp: <SiCsharp className='text-accent' />,
+  Unity: <FaUnity className='text-accent' />,
+  Laravel: <FaLaravel className='text-accent' />,
+  Vue: <FaVuejs className='text-accent' />,
+  Inertia: <SiInertia className='text-accent' />,
+  MySql: <SiMysql className='text-accent' />,
+  MongoDB: <SiMongodb className='text-accent' />,
+  'Express.js': <SiExpress className='text-accent' />,
+  React: <FaReact className='text-accent' />,
+  'Node.js': <FaNodeJs className='text-accent' />,
+  'Tailwind.css': <FaSass className='text-accent' />,
 }
 
 const projects = [
@@ -61,6 +61,21 @@ const projects = [
     github: 'https://github.com/zachary013/real-estate-app-mern',
   },
 ]
+
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+}
+
+const staggerChildren = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+}
 
 const Portfolio = () => {
   const [project, setProject] = useState(projects[0])
@@ -100,60 +115,77 @@ const Portfolio = () => {
 
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { delay: 2.4, duration: 0.4, ease: 'easeIn' } }}
+      initial="hidden"
+      animate="visible"
+      variants={staggerChildren}
       className='min-h-[80vh] flex flex-col justify-center py-12 xl:px-0'
     >
       <div className="container mx-auto">
         <div className='flex flex-col xl:flex-row xl:gap-[30px]'>
-          <div className='w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none'>
-            <div className='flex flex-col gap-[30px] h-[50%]'>
-              <div className='text-8xl leading-none font-extra-bold text-transparent text-outline'>
+          <motion.div 
+            variants={fadeInUp}
+            className='w-full xl:w-[50%] xl:h-[460px] flex flex-col xl:justify-between order-2 xl:order-none'
+          >
+            <motion.div variants={staggerChildren} className='flex flex-col gap-[30px] h-[50%]'>
+              <motion.div 
+                variants={fadeInUp}
+                className='text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-500 mb-4'
+              >
                 {project.num}
-              </div>
-              <h2 className='text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize'>
+              </motion.div>
+              <motion.h2 
+                variants={fadeInUp}
+                className='text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize'
+              >
                 {project.title}
-              </h2>
-              <p className='text-white/60'>{project.description}</p>
-              <ul className='flex gap-4'>
+              </motion.h2>
+              <motion.p variants={fadeInUp} className='text-white/60'>{project.description}</motion.p>
+              <motion.ul variants={staggerChildren} className='flex gap-4'>
                 {project.stack.map((item, index) => (
-                  <li key={index} className='text-4xl flex items-center'>
+                  <motion.li key={index} variants={fadeInUp} className='text-4xl flex items-center'>
                     <div className='text-4xl mr-4' aria-label={item.name}>
                       {techIcons[item.name]}
                     </div>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
-              <div className='border border-white/20'></div>
-              <div className='flex items-center gap-4'>
-                <Link href={project.live} target="_blank" rel="noopener noreferrer">
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className='w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group'>
-                        <BsArrowUpRight className='text-white text-3xl group-hover:text-accent ' />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Live project</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-                <Link href={project.github} target="_blank" rel="noopener noreferrer">
-                  <TooltipProvider delayDuration={100}>
-                    <Tooltip>
-                      <TooltipTrigger className='w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group'>
-                        <BsGithub className='text-white text-3xl group-hover:text-accent ' />
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>GitHub repo</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className='w-full xl:w-[50%]'>
+              </motion.ul>
+              <motion.div variants={fadeInUp} className='border border-white/20'></motion.div>
+              <motion.div variants={staggerChildren} className='flex items-center gap-4'>
+                <motion.div variants={fadeInUp}>
+                  <Link href={project.live} target="_blank" rel="noopener noreferrer">
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger className='w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group'>
+                          <BsArrowUpRight className='text-white text-3xl group-hover:text-accent ' />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Live project</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Link>
+                </motion.div>
+                <motion.div variants={fadeInUp}>
+                  <Link href={project.github} target="_blank" rel="noopener noreferrer">
+                    <TooltipProvider delayDuration={100}>
+                      <Tooltip>
+                        <TooltipTrigger className='w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group'>
+                          <BsGithub className='text-white text-3xl group-hover:text-accent ' />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>GitHub repo</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+          <motion.div 
+            variants={fadeInUp}
+            className='w-full xl:w-[50%]'
+          >
             <Swiper
               spaceBetween={30}
               slidesPerView={1}
@@ -162,7 +194,10 @@ const Portfolio = () => {
             >
               {projects.map((project, index) => (
                 <SwiperSlide key={index} className='w-full'>
-                  <div
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5 }}
                     className='h-[460px] relative group flex justify-center items-center bg-pink-50/20 rounded-lg overflow-hidden'
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={() => handleMouseLeave(index)}
@@ -187,20 +222,25 @@ const Portfolio = () => {
                         alt={project.title}
                       />
                     )}
-                    <div 
-                      className={`absolute inset-0 bg-gradient-to-t from-black/70 to-black/20 transition-opacity duration-300 ${
-                        hoveredIndex === index ? 'opacity-0' : 'opacity-100'
-                      }`}
+                    <motion.div 
+                      initial={{ opacity: 1 }}
+                      animate={{ opacity: hoveredIndex === index ? 0 : 1 }}
+                      transition={{ duration: 0.3 }}
+                      className='absolute inset-0 bg-gradient-to-t from-black/70 to-black/20'
                     />
-                    <div 
-                      className={`absolute inset-0 flex flex-col justify-end p-6 transition-opacity duration-300 ${
-                        hoveredIndex === index ? 'opacity-0' : 'opacity-100'
-                      }`}
+                    <motion.div 
+                      initial={{ opacity: 1, y: 0 }}
+                      animate={{ 
+                        opacity: hoveredIndex === index ? 0 : 1,
+                        y: hoveredIndex === index ? 20 : 0
+                      }}
+                      transition={{ duration: 0.3 }}
+                      className='absolute inset-0 flex flex-col justify-end p-6'
                     >
                       <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
                       <p className="text-white/80">{project.category}</p>
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
                 </SwiperSlide>
               ))}
               <WorkSliderBtns
@@ -208,7 +248,7 @@ const Portfolio = () => {
                 btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all"
               />
             </Swiper>
-          </div>
+          </motion.div>
         </div>
       </div>
     </motion.section>
