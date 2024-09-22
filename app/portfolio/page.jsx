@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import "swiper/css"
 import { BsArrowUpRight, BsGithub } from 'react-icons/bs'
@@ -9,58 +9,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import WorkSliderBtns from '@/components/WorkSliderBtns'
 import Link from 'next/link'
 import Image from 'next/image'
-import { FaUnity, FaLaravel, FaVuejs, FaNodeJs, FaReact, FaSass } from 'react-icons/fa'
-import { SiMongodb, SiCsharp, SiExpress, SiInertia, SiMysql } from 'react-icons/si'
-
-const techIcons = {
-  CSharp: <SiCsharp className='text-accent' />,
-  Unity: <FaUnity className='text-accent' />,
-  Laravel: <FaLaravel className='text-accent' />,
-  Vue: <FaVuejs className='text-accent' />,
-  Inertia: <SiInertia className='text-accent' />,
-  MySql: <SiMysql className='text-accent' />,
-  MongoDB: <SiMongodb className='text-accent' />,
-  'Express.js': <SiExpress className='text-accent' />,
-  React: <FaReact className='text-accent' />,
-  'Node.js': <FaNodeJs className='text-accent' />,
-  'Tailwind.css': <FaSass className='text-accent' />,
-}
-
-const projects = [
-  {
-    num: '01',
-    category: 'Gaming',
-    title: 'Dungeon Adventure',
-    description: '2D procedurally generated RPG game in Unity.',
-    stack: [{ name: "CSharp" }, { name: "Unity" }],
-    image: '/assets/projects/dungeon-game.png',
-    video: '/assets/videos/unity-game.mp4',
-    live: '',
-    github: 'https://github.com/zachary013/dungeon-adventure-rpg-2d',
-  },
-  {
-    num: '02',
-    category: 'Full Stack',
-    title: 'Ecommerce Website Cloe',
-    description: 'Cloe is an ecommerce website built using Laravel Vue and Inertia.',
-    stack: [{ name: "Laravel" }, { name: "Vue" }, { name: "Inertia" }, { name: "MySql" }],
-    image: '/assets/projects/cloe.png',
-    video: '/assets/videos/cloe-website.mp4',
-    live: '',
-    github: 'https://github.com/zachary013/laravel-vue-ecommerce',
-  },
-  {
-    num: '03',
-    category: 'Fullstack',
-    title: 'Riviera Estate',
-    description: 'A real estate website built using the MERN stack.',
-    stack: [{ name: "MongoDB" }, { name: "Express.js" }, { name: "React" }, { name: "Node.js" }, { name: "Tailwind.css" }],
-    image: '/assets/projects/real-estate.png',
-    video: '',
-    live: '',
-    github: 'https://github.com/zachary013/real-estate-app-mern',
-  },
-]
+import { projects, techIcons } from '@/data/projects'
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -77,40 +26,13 @@ const staggerChildren = {
   }
 }
 
-const Portfolio = () => {
+export default function Portfolio() {
   const [project, setProject] = useState(projects[0])
   const [hoveredIndex, setHoveredIndex] = useState(null)
-  const videoRefs = useRef(projects.map(() => React.createRef()))
 
   const handleSlideChange = (swiper) => {
     const currentIndex = swiper.activeIndex
     setProject(projects[currentIndex])
-  }
-
-  useEffect(() => {
-    projects.forEach((project, index) => {
-      if (project.video) {
-        const video = videoRefs.current[index].current
-        video.load()
-      }
-    })
-  }, [])
-
-  const handleMouseEnter = (index) => {
-    setHoveredIndex(index)
-    if (projects[index].video) {
-      const video = videoRefs.current[index].current
-      video.play()
-    }
-  }
-
-  const handleMouseLeave = (index) => {
-    setHoveredIndex(null)
-    if (projects[index].video) {
-      const video = videoRefs.current[index].current
-      video.pause()
-      video.currentTime = 0
-    }
   }
 
   return (
@@ -199,29 +121,15 @@ const Portfolio = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
                     className='h-[460px] relative group flex justify-center items-center bg-pink-50/20 rounded-lg overflow-hidden'
-                    onMouseEnter={() => handleMouseEnter(index)}
-                    onMouseLeave={() => handleMouseLeave(index)}
+                    onMouseEnter={() => setHoveredIndex(index)}
+                    onMouseLeave={() => setHoveredIndex(null)}
                   >
-                    {project.video ? (
-                      <video
-                        ref={videoRefs.current[index]}
-                        className='absolute inset-0 w-full h-full object-cover'
-                        loop
-                        muted
-                        playsInline
-                        preload="auto"
-                      >
-                        <source src={project.video} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                    ) : (
-                      <Image
-                        src={project.image}
-                        fill
-                        className='object-cover'
-                        alt={project.title}
-                      />
-                    )}
+                    <Image
+                      src={project.image}
+                      fill
+                      className='object-cover'
+                      alt={project.title}
+                    />
                     <motion.div 
                       initial={{ opacity: 1 }}
                       animate={{ opacity: hoveredIndex === index ? 0 : 1 }}
@@ -254,5 +162,3 @@ const Portfolio = () => {
     </motion.section>
   )
 }
-
-export default Portfolio
