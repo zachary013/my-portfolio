@@ -13,7 +13,7 @@ const Home = () => {
 
   const handleResumeClick = () => {
     playClickSound();
-    window.open('/Docs/cv_fr.pdf', '_blank');
+    window.open('/Docs/cv.pdf', '_blank');
   };
 
   const handleSocialClick = (url) => {
