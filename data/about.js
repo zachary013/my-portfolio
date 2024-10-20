@@ -1,8 +1,5 @@
 import React from 'react';
 import {
-  FaHtml5,
-  FaCss3,
-  FaPhp,
   FaJs,
   FaVuejs,
   FaReact,
@@ -10,6 +7,10 @@ import {
   FaLaravel,
   FaPython,
   FaJava,
+  FaAngular,
+  FaDocker,
+  FaSymfony,
+  FaFigma
 } from 'react-icons/fa';
 
 import {
@@ -21,7 +22,8 @@ import {
   SiMysql,
   SiPostgresql,
   SiGit,
-  SiUnity
+  SiUnity,
+  SiSpringboot
 } from 'react-icons/si';
 import { RiNextjsFill } from "react-icons/ri";
 
@@ -125,22 +127,6 @@ export const skills = [
     title: 'My Skills',
     skillList: [
       {
-        icon: <FaHtml5 className='text-7xl text-html' />,
-        title: 'HTML5',
-      },
-      {
-        icon: <FaCss3 className='text-7xl text-css' />,
-        title: 'CSS3',
-      },
-      {
-        icon: <FaJs className='text-7xl text-js' />,
-        title: 'JavaScript',
-      },
-      {
-        icon: <FaPhp className='text-7xl text-php' />,
-        title: 'PHP',
-      },
-      {
         icon: <FaReact className='text-7xl text-react' />,
         title: 'React',
       },
@@ -153,6 +139,10 @@ export const skills = [
         title: 'Vue.js',
       },
       {
+        icon: <FaAngular className='text-7xl text-vue' />,
+        title: 'Angular',
+      },
+      {
         icon: <FaNodeJs className='text-7xl text-node' />,
         title: 'Node.js',
       },
@@ -161,8 +151,16 @@ export const skills = [
         title: 'Express',
       },
       {
+        icon: <SiSpringboot className='text-7xl text-express' />,
+        title: 'Spring Boot',
+      },
+      {
         icon: <FaLaravel className='text-7xl text-laravel' />,
         title: 'Laravel',
+      },
+      {
+        icon: <FaSymfony className='text-7xl text-laravel' />,
+        title: 'Symfony',
       },
       {
         icon: <FaPython className='text-7xl text-python' />,
@@ -171,6 +169,10 @@ export const skills = [
       {
         icon: <FaJava className='text-7xl text-java' />,
         title: 'Java',
+      },
+      {
+        icon: <FaJs className='text-7xl text-js' />,
+        title: 'JavaScript',
       },
       {
         icon: <SiCsharp className='text-7xl text-js' />,
@@ -201,8 +203,16 @@ export const skills = [
         title: 'Git',
       },
       {
+        icon: <FaDocker className='text-7xl text-git' />,
+        title: 'Docker',
+      },
+      {
         icon: <SiUnity className='text-7xl text-git' />,
         title: 'Unity',
+      },
+      {
+        icon: <FaFigma className='text-7xl text-git' />,
+        title: 'Figma',
       },
     ]
   }
