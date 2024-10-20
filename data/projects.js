@@ -1,5 +1,6 @@
-import { FaUnity, FaLaravel, FaVuejs, FaNodeJs, FaReact, FaSass } from 'react-icons/fa'
-import { SiMongodb, SiCsharp, SiExpress, SiInertia, SiMysql, SiQuasar, SiTailwindcss } from 'react-icons/si'
+import { FaUnity, FaLaravel, FaVuejs, FaNodeJs, FaReact, FaSass, FaAngular, FaDocker } from 'react-icons/fa'
+import { SiMongodb, SiCsharp, SiExpress, SiInertia, SiMysql, SiQuasar, SiTailwindcss, SiSpringboot } from 'react-icons/si'
+import { BiLogoPostgresql } from "react-icons/bi";
 
 export const techIcons = {
   CSharp: <SiCsharp className='text-accent' />,
@@ -14,7 +15,11 @@ export const techIcons = {
   'Node.js': <FaNodeJs className='text-accent' />,
   'Sass': <FaSass className='text-accent' />,
   'Quasar': <SiQuasar className='text-accent' />,
-  'Tailwind.css': <SiTailwindcss className='text-accent' />
+  'Tailwind.css': <SiTailwindcss className='text-accent' />,
+  'Spring Boot': <SiSpringboot className='text-accent' />,
+  'Docker': <FaDocker className='text-accent' />,
+  'PostgreSQL': <BiLogoPostgresql className='text-accent' />,
+  'Angular': <FaAngular className='text-accent' />,
 }
 
 export const projects = [
@@ -57,5 +62,15 @@ export const projects = [
     image: '/assets/projects/todo.png',
     live: '',
     github: 'https://github.com/zachary013/quasar-todo-list-app',
+  },
+  {
+    num: '05',
+    category: 'Full Stack',
+    title: 'Book Social App : Bookie',
+    description: 'Bookie is a book-centric social app built with Spring Boot, Angular, Docker, and PostgreSQL. It allows users to discover books, share reviews, and connect with fellow readers. The app provides personalized recommendations and facilitates virtual book clubs and events. It leverages machine learning to enhance the user experience. Bookie s goal is to cultivate a vibrant community of book enthusiast.',
+    stack: [{ name: "Spring Boot" }, { name: "Angular" }, { name: "PostgreSQL" }, { name: "Docker" }],
+    image: '/assets/projects/social_book.jpg',
+    live: '',
+    github: 'https://github.com/zachary013/spring-angular-book-network',
   }
 ]
