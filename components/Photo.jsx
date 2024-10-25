@@ -9,21 +9,21 @@ const Photo = () => {
         initial={{ opacity: 0 }}
         animate={{
           opacity: 1,
-          transition: { delay: 2, duration: 0.4, ease: 'easeIn' },
+          transition: { duration: 0.4, ease: 'easeIn' }, // Removed delay
         }}
       >
         <motion.div
           initial={{ opacity: 0 }}
           animate={{
             opacity: 1,
-            transition: { delay: 2.4, duration: 0.4, ease: 'easeInOut' },
+            transition: { duration: 0.4, ease: 'easeInOut' }, // Removed delay
           }}
           className="w-[298px] h-[298px] lg:w-[498px] lg:h-[498px] mix-blend-lighten absolute"
         >
           <Image
             src="/assets/photo.png"
             alt="Homepage Image"
-            priority
+            priority // Keep priority for critical images
             quality={100}
             fill
             className="object-contain rounded-full"
@@ -57,7 +57,7 @@ const Photo = () => {
               scale: [1, 1.05, 1],
             }}
             transition={{
-              duration: 20,
+              duration: 10, // Reduced duration
               repeat: Infinity,
               repeatType: 'reverse',
               ease: 'easeInOut',
