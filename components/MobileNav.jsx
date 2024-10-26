@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { usePathname } from "next/navigation";
 import Link from 'next/link';
-import { CiMenuFries } from "react-icons/ci";
+import { TiThMenuOutline } from "react-icons/ti";
 
 const links = [
     { name: 'home', path: '/' },
@@ -28,7 +28,7 @@ const MobileNav = () => {
                 className="flex justify-center items-center"
                 onClick={() => setIsOpen(!isOpen)}
             >
-                <CiMenuFries className='text-[32px] text-accent' />
+                <TiThMenuOutline className='text-[32px] text-accent' />
             </SheetTrigger>
             <SheetContent className="flex flex-col">
                 <div className="mt-32 mb-40 text-center text-2xl">
