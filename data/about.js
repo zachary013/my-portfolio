@@ -64,7 +64,7 @@ export const education = [
       },
       {
         institution: 'CPGE Tetouan',
-        degree: 'Mathematics and Physics',
+        degree: 'Mathematics and Physics (MPSI)',
         duration: '2020 - 2021',
       }
     ]
