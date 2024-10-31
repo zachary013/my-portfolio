@@ -61,7 +61,7 @@ export default function Portfolio() {
               >
                 {project.title}
               </motion.h2>
-              <motion.p variants={fadeInUp} className='text-white/60'>{project.description}</motion.p>
+              <motion.p variants={fadeInUp} className='text-white/60 text-justify'>{project.description}</motion.p>
               <motion.ul variants={staggerChildren} className='flex gap-4'>
                 {project.stack.map((item, index) => (
                   <motion.li key={index} variants={fadeInUp} className='text-4xl flex items-center'>

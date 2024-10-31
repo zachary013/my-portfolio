@@ -36,7 +36,7 @@ export const projects = [
   {
     num: '02',
     category: 'Full Stack',
-    title: 'Ecommerce Website Cloe',
+    title: 'Clothing Brand Cloe',
     description: 'Cloe is an ecommerce website built using Laravel Vue and Inertia.',
     stack: [{ name: "Laravel" }, { name: "Vue" }, { name: "Inertia" }, { name: "MySql" }, { name: "Tailwind.css" }],
     image: '/assets/projects/cloe.png',

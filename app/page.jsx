@@ -50,7 +50,7 @@ const Home = () => {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="max-w-[500px] mb-9 text-white/60"
             >
-              I am a passionate Full Stack Developer based in Tangier, Morocco.
+              I am a junior Full Stack Developer based in 📍Tangier, Morocco.
             </motion.p>
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
