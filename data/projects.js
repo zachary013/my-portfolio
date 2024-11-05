@@ -66,8 +66,8 @@ export const projects = [
   {
     num: '05',
     category: 'Full Stack',
-    title: 'Book Network App : Bookie',
-    description: 'Bookie is a book-centric social app that allows users to discover books, share reviews, and connect with fellow readers. The app provides personalized recommendations and facilitates virtual book clubs and events.',
+    title: 'BookClub',
+    description: 'BookClub is a social app that allows users to discover, borrow and share books. The app provides personalized recommendations and facilitates virtual book clubs and events.',
     stack: [{ name: "Spring Boot" }, { name: "Angular" }, { name: "PostgreSQL" }, { name: "Docker" }],
     image: '/assets/projects/social_book.jpg',
     live: '',
