@@ -1,4 +1,4 @@
-import { FaUnity, FaLaravel, FaVuejs, FaNodeJs, FaReact, FaSass, FaAngular, FaDocker } from 'react-icons/fa'
+import { FaUnity, FaLaravel, FaVuejs, FaNodeJs, FaReact, FaSass, FaAngular, FaDocker, FaBootstrap } from 'react-icons/fa'
 import { SiMongodb, SiCsharp, SiExpress, SiInertia, SiMysql, SiQuasar, SiTailwindcss, SiSpringboot } from 'react-icons/si'
 import { BiLogoPostgresql } from "react-icons/bi";
 
@@ -20,6 +20,7 @@ export const techIcons = {
   'Docker': <FaDocker className='text-accent' />,
   'PostgreSQL': <BiLogoPostgresql className='text-accent' />,
   'Angular': <FaAngular className='text-accent' />,
+  'Bootstrap': <FaBootstrap className='text-accent' />,
 }
 
 export const projects = [
@@ -72,5 +73,15 @@ export const projects = [
     image: '/assets/projects/social_book.jpg',
     live: '',
     github: 'https://github.com/zachary013/spring-angular-book-network',
+  },
+  {
+    num: '06',
+    category: 'Full Stack',
+    title: 'Bank Of Morocco',
+    description: 'Banking system application that includes features such as adding clients, employees, and groups, creating accounts, as well as handling withdrawals and payments.',
+    stack: [{ name: "Spring Boot" }, { name: "Angular" }, { name: "MySql" }, { name: "Bootstrap" }],
+    image: '/assets/projects/bank-of-morocco.png',
+    live: '',
+    github: 'https://github.com/zachary013/gestion-compte-bancaire-spring',
   }
 ]
