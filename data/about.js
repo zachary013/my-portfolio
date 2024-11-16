@@ -41,7 +41,7 @@ export const experience = [
       {
         company: 'Hashtag 64',
         position: 'Full Stack Developer',
-        duration: 'July 2024 - Present',
+        duration: '01 July 2024 - 31 Nobember 2024',
       },
     ]
   }
