@@ -1,5 +1,5 @@
-import { FaUnity, FaLaravel, FaVuejs, FaNodeJs, FaReact, FaSass, FaAngular, FaDocker, FaBootstrap } from 'react-icons/fa'
-import { SiMongodb, SiCsharp, SiExpress, SiInertia, SiMysql, SiQuasar, SiTailwindcss, SiSpringboot } from 'react-icons/si'
+import { FaUnity, FaLaravel, FaVuejs, FaNodeJs, FaReact, FaSass, FaAngular, FaDocker, FaBootstrap, FaAws, FaJenkins } from 'react-icons/fa'
+import { SiMongodb, SiCsharp, SiExpress, SiInertia, SiMysql, SiQuasar, SiTailwindcss, SiSpringboot, SiTerraform, SiKubernetes, SiFlask, SiJupyter, SiMqtt, SiTensorflow, SiOpencv, SiNodered } from 'react-icons/si'
 import { BiLogoPostgresql } from "react-icons/bi";
 
 export const techIcons = {
@@ -21,18 +21,38 @@ export const techIcons = {
   'PostgreSQL': <BiLogoPostgresql className='text-accent' />,
   'Angular': <FaAngular className='text-accent' />,
   'Bootstrap': <FaBootstrap className='text-accent' />,
+  'Jupyter Notebook': <SiJupyter className='text-accent' />,
+  'Flask': <SiFlask className='text-accent' />,
+  'Jenkins': <FaJenkins className='text-accent' />,
+  'Kubernetes': <SiKubernetes className='text-accent' />,
+  'Terraform': <SiTerraform className='text-accent' />,
+  'AWS': <FaAws className='text-accent' />,
+  'Mqtt': <SiMqtt className='text-accent' />,
+  'Tensorflow': <SiTensorflow className='text-accent' />,
+  'OpenCV': <SiOpencv className='text-accent' />,
+  'node-red': <SiNodered className='text-accent' />,
 }
 
 export const projects = [
   {
     num: '01',
-    category: 'Gaming',
-    title: 'Dungeon Adventure',
-    description: '2D procedurally generated RPG game in Unity.',
-    stack: [{ name: "CSharp" }, { name: "Unity" }],
-    image: '/assets/projects/dungeon-game.png',
+    category: 'Full Stack - DevOps - Cloud',
+    title: 'Pynance',
+    description: 'A comprehensive fintech platform that provides advanced tools and services for financial analysis, risk assessment, and market predictions.',
+    stack: [
+      { name: "Spring Boot" }, 
+      { name: "Angular" }, 
+      { name: "Jupyter Notebook" }, 
+      { name: "Flask" }, 
+      { name: "Docker" }, 
+      { name: "Jenkins" }, 
+      { name: "Kubernetes" }, 
+      { name: "Terraform" }, 
+      { name: "AWS" }
+    ],
+    image: '/assets/projects/fintech.png',
     live: '',
-    github: 'https://github.com/zachary013/dungeon-adventure-rpg-2d',
+    github: 'https://github.com/Fintech-LSI',
   },
   {
     num: '02',
@@ -66,6 +86,26 @@ export const projects = [
   },
   {
     num: '05',
+    category: 'IoT - Deep Learning - Computer Vision',
+    title: 'Smart Fitness Tracker',
+    description: 'A real-time exercise tracking system that uses computer vision and deep learning to detect and count various exercises. Built with TensorFlow, Flask, and MQTT for IoT integration.',
+    stack: [{ name: "Flask" }, { name: "Tensorflow" }, { name: "OpenCV" }, { name: "Mqtt" }, { name: "node-red" }],
+    image: '/assets/projects/fitness-tracker.png',
+    live: '',
+    github: 'https://github.com/zachary013/fitness-tracker-model',
+  },
+  {
+    num: '06',
+    category: 'Gaming',
+    title: 'Dungeon Adventure',
+    description: '2D procedurally generated RPG game in Unity.',
+    stack: [{ name: "CSharp" }, { name: "Unity" }],
+    image: '/assets/projects/dungeon-game.png',
+    live: '',
+    github: 'https://github.com/zachary013/dungeon-adventure-rpg-2d',
+  },
+  {
+    num: '07',
     category: 'Full Stack',
     title: 'BookClub',
     description: 'BookClub is a social app that allows users to discover, borrow and share books. The app provides personalized recommendations and facilitates virtual book clubs and events.',
@@ -73,15 +113,5 @@ export const projects = [
     image: '/assets/projects/social_book.jpg',
     live: '',
     github: 'https://github.com/zachary013/spring-angular-book-network',
-  },
-  {
-    num: '06',
-    category: 'Full Stack',
-    title: 'Bank Of Morocco',
-    description: 'Banking system application that includes features such as adding clients, employees, and groups, creating accounts, as well as handling withdrawals and payments.',
-    stack: [{ name: "Spring Boot" }, { name: "Angular" }, { name: "MySql" }, { name: "Bootstrap" }],
-    image: '/assets/projects/bank-of-morocco.png',
-    live: '',
-    github: 'https://github.com/zachary013/gestion-compte-bancaire-spring',
   }
 ]
