@@ -93,7 +93,7 @@ const About = () => {
                       transition={{ duration: 0.6, delay: 0.3 }}
                     >
                       <Image
-                        src="/assets/photo2.jpeg"
+                        src="/assets/aboutme.jpg"
                         alt="Zakariae Azarkan"
                         width={356}
                         height={356}
