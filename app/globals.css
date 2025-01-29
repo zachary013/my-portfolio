@@ -23,3 +23,29 @@
   }
 }
 
+@layer utilities {
+  /* Horizontal Scrolling Animation */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll 20s linear infinite;
+    display: flex;
+    gap: 2rem; /* Adjust the gap between icons */
+  }
+
+  /* Gradient Overlays */
+  .gradient-overlay-left {
+    background: linear-gradient(to right, rgba(17, 24, 39, 1), rgba(17, 24, 39, 0));
+  }
+
+  .gradient-overlay-right {
+    background: linear-gradient(to left, rgba(17, 24, 39, 1), rgba(17, 24, 39, 0));
+  }
+}

@@ -264,9 +264,9 @@ const About = () => {
                         >
                           <TooltipProvider delayDuration={100}>
                             <Tooltip>
-                              <TooltipTrigger className='w-full h-[150px] bg-gray-800 bg-opacity-50 backdrop-blur-lg rounded-xl flex justify-center items-center group'>
+                              <TooltipTrigger className='w-full h-[150px] bg-gradient-to-br from-gray-800 to-gray-900 backdrop-blur-lg rounded-xl flex justify-center items-center group hover:from-accent hover:to-accent-hover transition-all duration-300'>
                                 <motion.div 
-                                  className='text-6xl group-hover:text-accent transition-all duration-300'
+                                  className='text-6xl group-hover:text-white transition-all duration-300'
                                   whileHover={{ scale: 1.1 }}
                                   whileTap={{ scale: 0.9 }}
                                 >

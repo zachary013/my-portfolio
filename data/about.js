@@ -1,30 +1,33 @@
 import React from 'react';
 import {
-  FaJs,
-  FaVuejs,
-  FaReact,
-  FaNodeJs,
-  FaLaravel,
-  FaPython,
-  FaJava,
-  FaAngular,
   FaDocker,
-  FaSymfony,
-  FaFigma
+  FaJenkins,
+  FaAws,
+  FaGithub,
+  FaVuejs,
+  FaAngular,
+  FaLaravel,
+  FaNodeJs,
+  FaLinux
 } from 'react-icons/fa';
 
 import {
-  SiCsharp,
-  SiTailwindcss,
-  SiExpress,
-  SiQuasar,
-  SiMongodb,
+  SiKubernetes,
+  SiTerraform,
+  SiGrafana,
+  SiPrometheus,
+  SiFlask,
+  SiSpringboot,
+  SiJupyter,
+  SiDotnet,
+  SiOracle,
   SiMysql,
   SiPostgresql,
-  SiGit,
+  SiMongodb,
   SiUnity,
-  SiSpringboot
+  SiExpress
 } from 'react-icons/si';
+
 import { RiNextjsFill } from "react-icons/ri";
 
 export const about = {
@@ -127,19 +130,51 @@ export const skills = [
     title: 'My Skills',
     skillList: [
       {
-        icon: <FaReact className='text-7xl text-react' />,
-        title: 'React',
+        icon: <FaDocker className='text-7xl text-blue-500' />,
+        title: 'Docker',
       },
       {
-        icon: <RiNextjsFill className='text-7xl text-next' />,
+        icon: <FaJenkins className='text-7xl text-red-500' />,
+        title: 'Jenkins',
+      },
+      {
+        icon: <SiKubernetes className='text-7xl text-blue-600' />,
+        title: 'Kubernetes',
+      },
+      {
+        icon: <SiTerraform className='text-7xl text-purple-600' />,
+        title: 'Terraform',
+      },
+      {
+        icon: <FaAws className='text-7xl text-yellow-500' />,
+        title: 'AWS',
+      },
+      {
+        icon: <SiGrafana className='text-7xl text-orange-500' />,
+        title: 'Grafana',
+      },
+      {
+        icon: <SiPrometheus className='text-7xl text-red-600' />,
+        title: 'Prometheus',
+      },
+      {
+        icon: <SiFlask className='text-7xl text-gray-800' />,
+        title: 'Flask',
+      },
+      {
+        icon: <SiSpringboot className='text-7xl text-green-600' />,
+        title: 'Spring Boot',
+      },
+      {
+        icon: <RiNextjsFill className='text-7xl text-black' />,
         title: 'Next.js',
       },
       {
-        icon: <FaVuejs className='text-7xl text-vue' />,
+        icon: <FaVuejs className='text-7xl text-emerald-500' />,
         title: 'Vue.js',
       },
       {
-        icon: <FaAngular className='text-7xl text-vue' />,
+        icon: <FaAngular className='text-7xl text-red-600' />,
         title: 'Angular',
       },
       {
@@ -151,68 +186,44 @@ export const skills = [
         title: 'Express',
       },
       {
-        icon: <SiSpringboot className='text-7xl text-express' />,
-        title: 'Spring Boot',
-      },
-      {
-        icon: <FaLaravel className='text-7xl text-laravel' />,
+        icon: <FaLaravel className='text-7xl text-red-500' />,
         title: 'Laravel',
       },
       {
-        icon: <FaSymfony className='text-7xl text-laravel' />,
-        title: 'Symfony',
-      },
-      {
-        icon: <FaPython className='text-7xl text-python' />,
-        title: 'Python',
-      },
-      {
-        icon: <FaJava className='text-7xl text-java' />,
-        title: 'Java',
-      },
-      {
-        icon: <FaJs className='text-7xl text-js' />,
-        title: 'JavaScript',
-      },
-      {
-        icon: <SiCsharp className='text-7xl text-js' />,
-        title: 'C#',
-      },
-      {
-        icon: <SiTailwindcss className='text-7xl text-tailwind' />,
-        title: 'Tailwind CSS',
-      },
-      {
-        icon: <SiQuasar className='text-7xl text-quasar' />,
-        title: 'Quasar',
-      },
-      {
-        icon: <SiMongodb className='text-7xl text-mongodb' />,
-        title: 'MongoDB',
-      },
-      {
-        icon: <SiMysql className='text-7xl text-mysql' />,
-        title: 'MySQL',
-      },
-      {
-        icon: <SiPostgresql className='text-7xl text-postgresql' />,
-        title: 'PostgreSQL',
-      },
-      {
-        icon: <SiGit className='text-7xl text-git' />,
-        title: 'Git',
-      },
-      {
-        icon: <FaDocker className='text-7xl text-git' />,
-        title: 'Docker',
-      },
-      {
-        icon: <SiUnity className='text-7xl text-git' />,
+        icon: <SiUnity className='text-7xl text-gray-800' />,
         title: 'Unity',
       },
       {
-        icon: <FaFigma className='text-7xl text-git' />,
-        title: 'Figma',
+        icon: <FaGithub className='text-7xl text-orange-600' />,
+        title: 'Git',
+      },
+      {
+        icon: <FaLinux className='text-7xl text-node' />,
+        title: 'Linux',
+      },
+      {
+        icon: <SiJupyter className='text-7xl text-orange-500' />,
+        title: 'Jupyter Notebook',
+      },
+      {
+        icon: <SiDotnet className='text-7xl text-purple-600' />,
+        title: '.NET',
+      },
+      {
+        icon: <SiOracle className='text-7xl text-red-600' />,
+        title: 'Oracle',
+      },
+      {
+        icon: <SiMysql className='text-7xl text-blue-600' />,
+        title: 'MySQL',
+      },
+      {
+        icon: <SiPostgresql className='text-7xl text-blue-500' />,
+        title: 'PostgreSQL',
+      },
+      {
+        icon: <SiMongodb className='text-7xl text-green-500' />,
+        title: 'MongoDB',
       },
     ]
   }
